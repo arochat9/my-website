@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrew Rochat</title>
+    <!-- <script src="https://use.fontawesome.com/232cb0cd10.js"></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link href="css/indexstyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  </head>
+  <body>
+  <!-- <body onload="document.body.style.opacity='1'"> -->
+    <ul id="all_slides">
+      <div class="menu-button">
+        Menu <i class="fa fa-caret-down"></i>
+      </div>
+      <ul class="top">
+        <li><a href="AboutMe.html">About Me</a><li>
+        <div class="dropdown">
+          <span>Resume</span>
+          <div class="dropdown-content" style="min-width: 195px">
+            <a href="resumes/Andrew Rochat - 2020 Business Resume.pdf" target="_blank">Business Resume</a>
+            <a href="resumes/Andrew Rochat - Computer Science Resume 2020.pdf" target="_blank">Computer Science Resume</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <span>Contact</span>
+          <div class="dropdown-content" style="padding-right: 10px">
+            <a href = "mailto: arochat@wustl.edu">arochat@wustl.edu</a>
+            <a href = "https://www.linkedin.com/in/andrew-rochat-336124150/" target="_blank">Linkedin Page</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <span>Other Websites</span>
+          <div class="dropdown-content" style="padding-right: 10px">
+            <a href = "https://arochat9.github.io/Cookbook/" target="_blank">My Cookbook!</a>
+          </div>
+        </div>
+      </ul>
+
+      <li class="slide active"><p class="first"><i>&mdash;&mdash;&mdash; Hey, I'm &mdash;&mdash;&mdash;</i><br>Andrew</p></li>
+      <li class="slide"><p class="second">I'm a recent graduate from Washington University in St. Louis. I'm a double major in computer science and finance, and have work experience in both fields.</p></li>
+      <li class="slide"><p class="third">During my free time, I enjoy skiing, rock climbing, and listening to music.</p></li>
+    </ul>
+    <!-- <div class="buttons"> -->
+      <!-- <button class="controls" id="previous"><i class="fa fa-arrow-circle-o-left"></i></button>
+      <button class="controls" id="next"><i class="fa fa-arrow-circle-o-right"></i></button> -->
+
+    <a id="prev">❮</a>
+    <a id="next">❯</a>
+
+    <div class="flex-container">
+      <a class="button" href="BusinessExperience.html">Business Experience</a>
+      <a class="button" href="CSExperience.html">Computer Science Experience</a>
+      <a class="button" href="LeadershipExperience.html">Leadership Experience</a>
+    </div>
+    <!-- <button>Business Experience</button> -->
+    <!-- </div> -->
+
+    <script src="static/js/main.js"></script>
+    <script>
+
+      var menuList = document.getElementsByClassName("menu-button");
+      menuList[0].addEventListener("click", function() {
+        let menuItems = this.nextElementSibling;
+        let first = document.getElementsByClassName("first")[0];
+        let second = document.getElementsByClassName("second")[0];
+        let third = document.getElementsByClassName("third")[0];
+        if (menuItems.style.display === "block") {
+          $(this).find($(".fa")).removeClass('fa-caret-up').addClass('fa-caret-down');
+          first.style.display = "block";
+          second.style.display = "block";
+          third.style.display = "block";
+          menuItems.style.display = "none";
+        } else {
+          $(this).find($(".fa")).removeClass('fa-caret-down').addClass('fa-caret-up');
+          first.style.display = "none";
+          second.style.display = "none";
+          third.style.display = "none";
+          menuItems.style.display = "block";
+        }
+      });
+
+      var coll = document.getElementsByClassName("dropdown");
+      var i;
+
+      var widerScreenWidth = window.matchMedia("(max-width: 600px)");
+      if (widerScreenWidth.matches) {
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            // this.classList.toggle("active");
+            var content = this.childNodes[3].style.display;
+
+            var j;
+            for (j = 0; j < coll.length; j++) {
+              if (j != i) {
+                var contentOther = coll[j].childNodes[3];
+                contentOther.style.display = "none";
+              }
+            }
+
+            if (content === "block") {
+              this.childNodes[3].style.display = "none";
+            } else {
+              this.childNodes[3].style.display = "block";
+            }
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
